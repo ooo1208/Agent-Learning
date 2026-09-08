@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "id": "ctrip",
+      "directory": "agent_ctrip_assistant",
+      "url": "https://github.com/ooo1208/agent_ctrip_assistant.git",
+      "commit": "0cc3f2fb6401d9c96c98734a08f4d42277b2035d",
+      "demo": [
+        "ctrip_agent.py",
+        "--demo"
+      ],
+      "tests": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py",
+        "-v"
+      ]
+    },
+    {
+      "id": "rag",
+      "directory": "RAG",
+      "url": "https://github.com/ooo1208/RAG.git",
+      "commit": "dd8f6e9a9395969965806a5a54a0a0ca8518ffe3",
+      "demo": [
+        "rag_lab.py",
+        "demo"
+      ],
+      "tests": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    },
+    {
+      "id": "sql",
+      "directory": "Text2SQL",
+      "url": "https://github.com/ooo1208/Text2SQL.git",
+      "commit": "4c6c4794ec53fbc73c81efe7cc4a79e737f6fc8f",
+      "demo": [
+        "-m",
+        "text2sql",
+        "demo"
+      ],
+      "tests": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    },
+    {
+      "id": "erp",
+      "directory": "ERP_OPENCLAW",
+      "url": "https://github.com/ooo1208/ERP_OPENCLAW.git",
+      "commit": "0fe9ef9107766b7f084312b6cba9d65d285b04cd",
+      "demo": [],
+      "tests": []
+    }
+  ]
+}

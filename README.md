@@ -2,6 +2,8 @@
 
 **从工具调用、知识检索和数据库分析，逐步学到 ERP_OPENCLAW 综合业务 Agent。**
 
+[![Learning projects](https://github.com/ooo1208/Agent-Learning/actions/workflows/quality.yml/badge.svg)](https://github.com/ooo1208/Agent-Learning/actions/workflows/quality.yml)
+
 这是学习总入口，代码分别放在下面四个仓库中。三个入门工程可用 Python 3.11+ 离线运行；ERP 另有 Java、前端和服务依赖。
 
 | 顺序 | 仓库 | 核心练习 | 章节 |
@@ -59,5 +61,6 @@ git -C repos/RAG worktree add ../../RAG-chapter-03 chapter-03
 - [ERP 模块与基础项目对应](docs/project-map.md)
 - [LangGraph 官方历史 notebook](reference/LangGraph-Customer-Support/customer-support.ipynb)：附原许可证、固定提交和 SHA256；未执行其历史依赖。
 - [来源与许可](SOURCES.md)
+- [从 GitHub 下载后的验收记录](docs/verification.md)：40 项测试，6 项运行检查。
 
 总入口自己的三个标签分别对应路线与资料、带许可的原始参考 notebook、可复现运行工具与 CI。它是导航仓库，不是第五个业务项目。
