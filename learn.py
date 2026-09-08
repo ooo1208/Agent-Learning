@@ -34,19 +34,29 @@ def entries():
             raise ValueError('Each project must have a pinned full commit SHA')
         if project['url'] != 'https://github.com/ooo1208/' + project['directory'] + '.git':
             raise ValueError('Unexpected repository URL')
+        if (ROOT / '.gitmodules').exists():
+            relative = 'repos/' + project['directory']
+            registered_url = git('config', '--file', str(ROOT / '.gitmodules'), '--get', 'submodule.' + relative + '.url')
+            indexed = git('ls-files', '--stage', '--', relative).split()
+            if registered_url != project['url'] or indexed[:2] != ['160000', project['commit']]:
+                raise ValueError(f'{relative}: submodule and projects.json revisions must agree')
     return projects
 
 
 def clone(project):
     target = REPOS / project['directory']
-    if target.exists():
-        if not (target / '.git').exists():
-            raise RuntimeError(f'{target.name} already exists and is not a Git checkout; left untouched')
+    if (target / '.git').exists():
         origin = git('-C', str(target), 'remote', 'get-url', 'origin')
         head = git('-C', str(target), 'rev-parse', 'HEAD')
         if origin != project['url'] or head != project['commit']:
             raise RuntimeError(f'{target.name}: existing checkout differs from manifest; left untouched. Preserve your changes and use another clone directory.')
         print(f'{target.name}: matching checkout already present; left untouched')
+        return
+    if target.exists() and (not target.is_dir() or any(target.iterdir())):
+        raise RuntimeError(f'{target.name} contains files and is not a Git checkout; left untouched')
+    if (ROOT / '.gitmodules').exists():
+        git('submodule', 'update', '--init', '--', 'repos/' + project['directory'])
+        print(f'{target.name}: submodule initialized at {project["commit"][:12]}')
         return
     REPOS.mkdir(exist_ok=True)
     git('clone', '--no-checkout', project['url'], str(target))

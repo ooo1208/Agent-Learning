@@ -1,0 +1,12 @@
+[submodule "repos/agent_ctrip_assistant"]
+	path = repos/agent_ctrip_assistant
+	url = https://github.com/ooo1208/agent_ctrip_assistant.git
+[submodule "repos/RAG"]
+	path = repos/RAG
+	url = https://github.com/ooo1208/RAG.git
+[submodule "repos/Text2SQL"]
+	path = repos/Text2SQL
+	url = https://github.com/ooo1208/Text2SQL.git
+[submodule "repos/ERP_OPENCLAW"]
+	path = repos/ERP_OPENCLAW
+	url = https://github.com/ooo1208/ERP_OPENCLAW.git

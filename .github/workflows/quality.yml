@@ -22,10 +22,12 @@ jobs:
         python: ['3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - name: Clone exact documented project revisions
-        run: python learn.py clone
+      - name: Check all project references match the manifest
+        run: python learn.py clone --with-erp
       - name: Run offline demos and tests
         run: python learn.py verify
